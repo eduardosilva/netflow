@@ -1,0 +1,46 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Launch Api",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build-api",
+            "program": "${workspaceFolder}/src/api/bin/Debug/net7.0/netflow.api.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "stopAtEntry": false,
+            "envFile": "${workspaceFolder}/.env"
+        },
+        {
+            "name": "Launch Jobs",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build-jobs",
+            "program": "${workspaceFolder}/src/jobs/bin/Debug/net7.0/netflow.jobs.dll",
+            "args": ["--", "-j", "WorkflowStepStatusChanger"],
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "stopAtEntry": false,
+            "envFile": "${workspaceFolder}/.env"
+        },
+        {
+            "name": ".NET Core Test",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "test",
+            "program": "${workspaceFolder}/tests/bin/Debug/netcoreapp3.1/netflow.tests.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/tests",
+            "stopAtEntry": false,
+            "serverReadyAction": {
+                "action": "openExternally",
+                "pattern": "\\bNow listening on:\\s+(https?://\\S+)"
+            }
+        }
+    ]
+}
